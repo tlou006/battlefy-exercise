@@ -1,7 +1,7 @@
 process.env.LEAGUE_API_KEY = "RGAPI-950201d9-4efc-4288-9fcc-cb2923f98425";
 
 const Express = require("express");
-const app = Express();
+const app = Express().set('json spaces', 2);
 const { Kayn, REGIONS } = require("kayn");
 const KaynClient = Kayn(process.env.LEAGUE_API_KEY)();
 const Helpers = require("./helpers");
