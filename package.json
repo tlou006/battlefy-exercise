@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "kayn": "^0.9.8"
+    "kayn": "^0.9.8",
+    "lodash": "^4.17.11"
   }
 }
