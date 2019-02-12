@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Moment from 'moment';
 import axios from 'axios';
 import './App.css';
 
@@ -18,7 +19,7 @@ class App extends Component {
 
   getMatchHistory(e) {
     let self = this;
-    axios.get("http://localhost:3001/match-list?name=" + this.state.playerName)
+    axios.get("https://battlefy-exercise.azurewebsites.net/match-list?name=" + this.state.playerName)
       .then(res => {
         self.setState({ matches: res.data });
       });
@@ -53,6 +54,9 @@ class App extends Component {
 */
 class MatchHistoryList extends Component {
 
+  formatDuration (seconds) {
+    return Moment.utc(seconds*1000).format('HH:mm:ss');
+  }
   render () {
     return (
       <ul id="matchHistory">
@@ -68,6 +72,7 @@ class MatchHistoryList extends Component {
             </header>
 
             <div class="details">
+              <p>Duration: {this.formatDuration(match.gameDuration)}</p>
               <p>K/D/A: {match.kills} / {match.deaths} / {match.assists}</p>
               <p>Total Creep Score: {match.totalCreepScore}</p>
               <p>Creep Score per minute: {match.creepScorePm.toFixed(2)}</p>
