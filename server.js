@@ -1,10 +1,18 @@
-process.env.LEAGUE_API_KEY = "RGAPI-950201d9-4efc-4288-9fcc-cb2923f98425";
+// Azure sets the env.PORT
+process.env.PORT = process.env.PORT || 3000;
+process.env.LEAGUE_API_KEY = "RGAPI-ada267e0-1684-4e20-bea5-4c4db3a69ba6";
 
 const Express = require("express");
 const app = Express().set('json spaces', 2);
 const { Kayn, REGIONS } = require("kayn");
 const KaynClient = Kayn(process.env.LEAGUE_API_KEY)();
 const Helpers = require("./helpers");
+
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 app.get("/", async (req, res, next) => {
     res.send("Battlefy exercise app API");
@@ -23,8 +31,8 @@ app.get("/match-list", async (req, res, next) => {
     res.json(Helpers.processMatchListResponse(summoner, recentMatches));
 });
 
-app.listen(3000, () => {
- console.log("Server running on port 3000");
+app.listen(process.env.PORT, () => {
+ console.log("Server running");
 });
 
 

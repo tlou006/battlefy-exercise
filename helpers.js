@@ -61,9 +61,9 @@ const Helpers = {
 
                 summonerRunes, 
                 championName,
-                kills: participantData.kills,
-                deaths: participantData.deaths,
-                assists: participantData.assists,
+                kills: stats.kills,
+                deaths: stats.deaths,
+                assists: stats.assists,
 
                 items,
 

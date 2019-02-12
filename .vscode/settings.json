@@ -1,0 +1,5 @@
+{
+    "appService.showBuildDuringDeployPrompt": false,
+    "appService.deploySubpath": "",
+    "appService.defaultWebAppToDeploy": "/subscriptions/d5509fa2-ccc2-4beb-bf01-d166a09584ca/resourceGroups/appsvc_rg_linux_centralus/providers/Microsoft.Web/sites/battlefy-exercise"
+}
